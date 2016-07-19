@@ -1,0 +1,4 @@
+dist
+Graphics/XHB/Monad/Internal/Instances/**
+!Graphics/XHB/Monad/Internal/Instances/**/
+!.gitkeep

@@ -1,0 +1,46 @@
+name: xhb-monad
+version: 1.0.6.2015.8.1
+cabal-version: 1.10
+build-type: Simple
+license: MIT
+license-file: LICENSE
+maintainer: spinalen@carleton.edu
+author: Nick Spinale
+extra-source-files:
+    README.md
+exposed-modules:
+    Graphics.XHB.Monad
+exposed: True
+buildable: True
+build-depends:
+    base -any,
+    xhb ==0.6.2015.8.1
+other-modules:
+    Graphics.XHB.Monad.Internal.Class
+    Graphics.XHB.Monad.Internal.Instances
+    Graphics.XHB.Monad.Internal.Instances.BigRequests
+    Graphics.XHB.Monad.Internal.Instances.Composite
+    Graphics.XHB.Monad.Internal.Instances.Damage
+    Graphics.XHB.Monad.Internal.Instances.DPMS
+    Graphics.XHB.Monad.Internal.Instances.DRI2
+    Graphics.XHB.Monad.Internal.Instances.Glx
+    Graphics.XHB.Monad.Internal.Instances.RandR
+    Graphics.XHB.Monad.Internal.Instances.Record
+    Graphics.XHB.Monad.Internal.Instances.Render
+    Graphics.XHB.Monad.Internal.Instances.Res
+    Graphics.XHB.Monad.Internal.Instances.ScreenSaver
+    Graphics.XHB.Monad.Internal.Instances.Shape
+    Graphics.XHB.Monad.Internal.Instances.Shm
+    Graphics.XHB.Monad.Internal.Instances.Sync
+    Graphics.XHB.Monad.Internal.Instances.XCMisc
+    Graphics.XHB.Monad.Internal.Instances.Xevie
+    Graphics.XHB.Monad.Internal.Instances.XF86Dri
+    Graphics.XHB.Monad.Internal.Instances.XFixes
+    Graphics.XHB.Monad.Internal.Instances.Xinerama
+    Graphics.XHB.Monad.Internal.Instances.Input
+    Graphics.XHB.Monad.Internal.Instances.XPrint
+    Graphics.XHB.Monad.Internal.Instances.Xproto
+    Graphics.XHB.Monad.Internal.Instances.SELinux
+    Graphics.XHB.Monad.Internal.Instances.Test
+    Graphics.XHB.Monad.Internal.Instances.XvMC
+    Graphics.XHB.Monad.Internal.Instances.Xv
