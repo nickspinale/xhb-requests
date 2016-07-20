@@ -74,11 +74,13 @@ buildDesc vs mods = emptyPackageDescription
     , library = Just emptyLibrary
         { exposedModules = [fromString "Graphics.XHB.Monad"]
         , libBuildInfo = emptyBuildInfo
-            { otherModules = fromString "Graphics.XHB.Monad.Internal.Class"
+            { otherModules = fromString "Graphics.XHB.Monad.Internal.Classes"
                            : fromString "Graphics.XHB.Monad.Internal.Instances"
                            : map (fromString . ("Graphics.XHB.Monad.Internal.Instances." ++)) mods
             , targetBuildDepends =
-                [ Dependency (PackageName "base") (anyVersion)
+                [ Dependency (PackageName "base") anyVersion
+                , Dependency (PackageName "mtl") anyVersion
+                , Dependency (PackageName "transformers") anyVersion
                 , Dependency (PackageName "xhb") (thisVersion (Version vs []))
                 ]
             , hsSourceDirs = ["src", "gen"]
@@ -110,7 +112,7 @@ instances file (Module _ _ _ _ _ _ decls) = Module emptyLoc name [prag] Nothing 
     prag = LanguagePragma emptyLoc [Ident "MultiParamTypeClasses"]
     f (mod, vars) = (emptyImport mod) { importSpecs = Just (False, map (IVar . Ident) vars) }
     imps = emptyImport ("Graphics.XHB.Gen." ++ file)
-         : emptyImport "Graphics.XHB.Monad.Internal.Class"
+         : emptyImport "Graphics.XHB.Monad.Internal.Classes"
          : map f [ ("Prelude", ["fmap"])
                  , ("Data.Bifunctor", ["second"])
                  , ("Graphics.XHB", ["getReply"])

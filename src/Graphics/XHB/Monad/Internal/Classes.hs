@@ -1,6 +1,6 @@
 {-# LANGUAGE FunctionalDependencies #-}
 
-module Graphics.XHB.Monad.Internal.Class
+module Graphics.XHB.Monad.Internal.Classes
     ( Request(..)
     , Notice(..)
     ) where

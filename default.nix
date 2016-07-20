@@ -41,11 +41,11 @@ in rec {
   };
 
   xhb-monad =
-    let f = { mkDerivation, base, stdenv, xhb }: mkDerivation {
+    let f = { mkDerivation, base, stdenv, xhb, mtl, transformers }: mkDerivation {
               pname = "xhb-monad";
               version = xhb-monad-src.version;
               src = xhb-monad-src;
-              libraryHaskellDepends = [ base xhb ];
+              libraryHaskellDepends = [ base mtl transformers xhb ];
               license = stdenv.lib.licenses.mit;
             };
     in hp.callPackage f {};
