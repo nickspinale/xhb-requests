@@ -8,4 +8,4 @@
 cd $(dirname $0)
 dir=$(nix-build -A xhb-monad-src --no-out-link)
 ln -sf $dir/xhb-monad.cabal xhb-monad.cabal
-ln -sf $dir/gen gen
+ln -sfT $dir/gen gen
