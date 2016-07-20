@@ -30,19 +30,22 @@ main :: IO ()
 main = do
     args <- getArgs
     case args of
-        [xhbIn, cabalOut, hsOut] -> do
-            desc <- readPackageDescription silent (xhbIn </> "xhb.cabal")
+        [inDir, outDir] -> do
+            desc <- readPackageDescription silent (inDir </> "xhb.cabal")
             let (vs, targs) = getInfo desc
-            writePackageDescription cabalOut $ buildDesc 1 vs targs
-            writeFile (hsOut </> "Instances" <.> "hs") . prettyPrint $ allInstances targs
+                cabalOut = outDir </> "xhb-monad.cabal"
+                instDir = outDir </> "gen" </> "Graphics" </> "XHB" </> "Monad" </> "Internal" </> "Instances"
+            createDirectoryIfMissing True instDir
+            writePackageDescription cabalOut $ buildDesc vs targs
+            writeFile (instDir <.> "hs") . prettyPrint $ allInstances targs
             forM_ targs $ \targ -> do
-                ParseOk mod <- parseFile $ xhbIn </> "patched"
+                ParseOk mod <- parseFile $ inDir </> "patched"
                                                  </> "Graphics"
                                                  </> "XHB"
                                                  </> "Gen"
                                                  </> targ <.> "hs"
-                writeFile (hsOut </> "Instances" </> targ <.> "hs") . prettyPrint $ instances targ mod
-        _ -> die "Usage: gen-xhb-monad <xhbIn> <cabalOut> <hsOut>"
+                writeFile (instDir </> targ <.> "hs") . prettyPrint $ instances targ mod
+        _ -> die "Usage: gen-xhb-monad <inDir> <outDir>"
 
 
 ----------------------
@@ -60,9 +63,9 @@ getInfo gpd = (vs, targs)
     f _ = Nothing
 
 
-buildDesc :: Int -> [Int] -> [String] -> PackageDescription
-buildDesc v vs mods = emptyPackageDescription
-    { package = PackageIdentifier (PackageName "xhb-monad") (Version (v:vs) [])
+buildDesc :: [Int] -> [String] -> PackageDescription
+buildDesc vs mods = emptyPackageDescription
+    { package = PackageIdentifier (PackageName "xhb-monad") (Version (0:1:vs) [])
     , license = MIT
     , licenseFiles = ["LICENSE"]
     , author = "Nick Spinale"
@@ -80,6 +83,7 @@ buildDesc v vs mods = emptyPackageDescription
                 [ Dependency (PackageName "base") (anyVersion)
                 , Dependency (PackageName "xhb") (thisVersion (Version vs []))
                 ]
+            , hsSourceDirs = ["src", "gen"]
             }
         }
     }
