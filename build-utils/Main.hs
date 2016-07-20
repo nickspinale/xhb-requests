@@ -23,34 +23,27 @@ import Distribution.License
 import System.IO.Unsafe
 
 
--- Takes keysymdef.h as stdin and writes Graphics.XHB.KeySym.{Defs,Names} as
--- into defsOut and namesOut
-
 main :: IO ()
 main = do
     args <- getArgs
     case args of
-        [inDir, outDir] -> do
-            desc <- readPackageDescription silent (inDir </> "xhb.cabal")
-            let (vs, targs) = getInfo desc
-                cabalOut = outDir </> "xhb-monad.cabal"
-                instDir = outDir </> "gen" </> "Graphics" </> "XHB" </> "Monad" </> "Internal" </> "Instances"
-            createDirectoryIfMissing True instDir
-            writePackageDescription cabalOut $ buildDesc vs targs
-            writeFile (instDir <.> "hs") . prettyPrint $ allInstances targs
-            forM_ targs $ \targ -> do
-                ParseOk mod <- parseFile $ inDir </> "patched"
-                                                 </> "Graphics"
-                                                 </> "XHB"
-                                                 </> "Gen"
-                                                 </> targ <.> "hs"
-                writeFile (instDir </> targ <.> "hs") . prettyPrint $ instances targ mod
+        [inDir, outDir] -> generate inDir outDir
         _ -> die "Usage: gen-xhb-monad <inDir> <outDir>"
 
 
-----------------------
--- CABAL GENERATION --
-----------------------
+generate :: FilePath -> FilePath -> IO ()
+generate inDir outDir = do
+    desc <- readPackageDescription silent (inDir </> "xhb.cabal")
+    let (vs, targs) = getInfo desc
+        cabalOut = outDir </> "xhb-monad.cabal"
+        instDir = outDir </> "gen" </> "Graphics" </> "XHB" </> "Monad" </> "Internal" </> "Instances"
+        genDir = inDir </> "patched" </> "Graphics" </> "XHB" </> "Gen"
+    createDirectoryIfMissing True instDir
+    writePackageDescription cabalOut $ buildDesc vs targs
+    writeFile (instDir <.> "hs") . prettyPrint $ allInstances targs
+    forM_ targs $ \targ -> do
+        ParseOk mod <- parseFile $ genDir </> targ <.> "hs"
+        writeFile (instDir </> targ <.> "hs") . prettyPrint $ instances targ mod
 
 
 getInfo :: GenericPackageDescription -> ([Int], [String])
@@ -61,6 +54,11 @@ getInfo gpd = (vs, targs)
     targs = catMaybes . map (f . components) . exposedModules . fromJust $ library pd
     f ["Graphics", "XHB", "Gen", mod] = Just mod
     f _ = Nothing
+
+
+----------------------
+-- CABAL GENERATION --
+----------------------
 
 
 buildDesc :: [Int] -> [String] -> PackageDescription
@@ -99,7 +97,10 @@ allInstances files = Module emptyLoc name [] Nothing (Just []) imps []
   where
     name = ModuleName ("Graphics.XHB.Monad.Internal.Instances")
     prag = LanguagePragma emptyLoc [Ident "MultiParamTypeClasses"]
-    imps = map (\file -> emptyImport ("Graphics.XHB.Monad.Internal.Instances." ++ file)) files
+    imps = map imp files
+    imp file = (emptyImport ("Graphics.XHB.Monad.Internal.Instances." ++ file))
+                    { importSpecs = Just (False, [])
+                    }
 
 
 instances :: String -> Module -> Module
@@ -114,7 +115,71 @@ instances file (Module _ _ _ _ _ _ decls) = Module emptyLoc name [prag] Nothing 
                  , ("Data.Bifunctor", ["second"])
                  , ("Graphics.XHB", ["getReply"])
                  ]
-    ds = map (\(x, (y, z)) -> convert x y z) . catMaybes $ map relevant decls
+    ds = map (\(x, y, z) -> convert x y z) . catMaybes $ map flatten decls
+
+
+flatten :: Decl -> Maybe (Name, [Type], Maybe Type)
+flatten (TypeSig _ [name] (TyFun (TyCon (Qual (ModuleName "Graphics.XHB.Connection.Types") (Ident "Connection"))) rest)) =
+    Just (name, ts, mt)
+  where
+    (ts, mt) = go rest
+    go (TyFun a b) = first (a:) $ go b
+    go (TyApp (TyCon (UnQual (Ident "IO"))) inner) = (,) [] $ case inner of
+        TyCon (Special UnitCon) -> Nothing
+        TyParen (TyApp (TyCon (UnQual (Ident "Receipt"))) outCon) -> Just outCon
+
+--safety
+flatten (TypeSig _ [Ident name] _) =
+    if name `elem` ["extension", "deserializeError", "deserializeEvent"]
+     then Nothing
+     else undefined
+flatten _ = Nothing
+
+
+convert :: Name -> [Type] -> Maybe Type -> Decl
+convert (Ident name) args ret = InstDecl emptyLoc Nothing [] []
+    (UnQual (Ident klazz))
+    types
+    [InsDecl (FunBind [Match emptyLoc (Ident fun) pats Nothing (UnGuardedRhs rhs) Nothing])]
+
+  where
+
+    title = case name of (n:ame) -> toUpper n : ame
+    vars = zipWith const (map (:[]) ['a'..]) args
+
+    (types, klazz, fun) =
+        if isJust ret
+        then ([inType, outType], "Request", "request")
+        else ([inType], "Notice", "notice")
+
+    (pats, outArgs) =
+        let (pats', outArgs') =
+                if args == [inType]
+                then (pvarId "req", ["req"])
+                else (PParen (PApp (unQual ("Mk" ++ title)) (map pvarId vars)), vars)
+        in (pvarId "conn" : [pats'], map varOf outArgs')
+
+    prerhs = case ret of
+                Nothing -> id
+                Just typ ->
+                    let tomap =
+                            if typ == outType
+                            then id
+                            else App (App fmapVar
+                                          (App fmapVar
+                                               (App (varOf "second")
+                                                    (varOf ("Mk" ++ title ++ "Reply")))))
+                    in tomap . App (App fmapVar (varOf "getReply"))
+
+    rhs = prerhs $ foldl App (App (varOf name) (varOf "conn")) outArgs
+
+    pvarId = PVar . Ident
+    unQual = UnQual . Ident
+    varOf = Var . unQual
+    fmapVar = varOf "fmap"
+
+    inType = TyCon (unQual title)
+    outType = TyCon (unQual (title ++ "Reply"))
 
 
 emptyLoc :: SrcLoc
@@ -132,60 +197,3 @@ emptyImport mod = ImportDecl
     , importAs = Nothing
     , importSpecs = Nothing
     }
-
-
-relevant :: Decl -> Maybe (Name, ([Type], Maybe Type))
-relevant (TypeSig _ [name] typ) =
-    if name `elem` ignore
-     then Nothing
-     else Just $ (name, flatten typ)
-     -- else Just undefined
-relevant _ = Nothing
-
-
-flatten :: Type -> ([Type], Maybe Type)
-flatten (TyFun (TyCon (Qual (ModuleName "Graphics.XHB.Connection.Types") (Ident "Connection"))) rest) = go rest
-  where
-    go (TyFun a b) = first (a:) $ go b
-    go (TyApp (TyCon (UnQual (Ident "IO"))) inner) = (,) [] $ case inner of
-        TyCon (Special UnitCon) -> Nothing
-        TyParen (TyApp (TyCon (UnQual (Ident "Receipt"))) outCon) -> Just outCon
-
-
-ignore :: [Name]
-ignore = map Ident ["extension", "deserializeError", "deserializeEvent"]
-
-
-convert :: Name -> [Type] -> Maybe Type -> Decl
-convert (Ident name) args ret = InstDecl emptyLoc Nothing [] []
-    (UnQual (Ident klazz))
-    types
-    [InsDecl $ FunBind [Match emptyLoc (Ident fun) pats Nothing (UnGuardedRhs rhs) Nothing]]
-  where
-    req = isJust ret
-    types = inType : if req then [outType] else []
-    title = case name of (n:ame) -> toUpper n : ame
-    (klazz, fun) = if req then ("Request", "request") else ("Notice", "notice")
-
-    pats = PVar (Ident "conn") : [ if args == [inType]
-                                    then PVar (Ident "req")
-                                    else PParen $ PApp (UnQual (Ident ("Mk" ++ title))) $ map PVar vars
-                                 ]
-
-    vars = zipWith const (map (Ident . (:[])) ['a'..]) args
-    prerhs = case ret of
-                Nothing -> id
-                Just typ -> let tomap = if typ == outType
-                                         then id
-                                         else InfixApp (App (Var (UnQual (Ident "fmap")))
-                                                            (App (Var (UnQual (Ident "second")))
-                                                                 (Var (UnQual (Ident ("Mk" ++ title ++ "Reply"))))))
-                                                       (QVarOp (UnQual (Ident "fmap")))
-                            in tomap . App (App (Var (UnQual (Ident "fmap")))
-                                                (Var (UnQual (Ident "getReply"))))
-
-    outArgs = map (Var . UnQual) $ if args == [inType] then [Ident "req"] else vars
-    rhs = prerhs $ foldl App (App (Var (UnQual (Ident name))) (Var (UnQual (Ident "conn")))) outArgs
-
-    inType = TyCon (UnQual (Ident title))
-    outType = TyCon (UnQual (Ident (title ++ "Reply")))
