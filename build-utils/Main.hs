@@ -1,26 +1,36 @@
-module Main where
+module Main (main) where
 
-import Prelude
-import Control.Applicative
+
 import Control.Monad
-import Control.Exception
 import Data.Bifunctor
 import Data.Char
+import Data.List
 import Data.Maybe
-import System.Exit
 import System.Environment
+import System.Exit
+
 import System.FilePath
 import System.Directory
+
 import Language.Haskell.Exts
+
+import Distribution.License
+import Distribution.ModuleName (ModuleName, fromString, components)
 import Distribution.Package
-import Distribution.PackageDescription.Configuration
 import Distribution.PackageDescription hiding (Var)
+import Distribution.PackageDescription.Configuration
 import Distribution.PackageDescription.Parse hiding (ParseOk)
-import Distribution.ModuleName (fromString, components)
 import Distribution.Verbosity
 import Distribution.Version
-import Distribution.License
-import System.IO.Unsafe
+
+
+thePkgName :: String
+thePkgName = "xhb-requests"
+
+baseModulePath, classesPath, instancesPath :: [String]
+baseModulePath = ["Graphics", "XHB", "Requests"]
+classesPath = baseModulePath ++ ["Internal", "Classes"]
+instancesPath = baseModulePath ++ ["Internal" ,"Instances"]
 
 
 main :: IO ()
@@ -28,15 +38,15 @@ main = do
     args <- getArgs
     case args of
         [inDir, outDir] -> generate inDir outDir
-        _ -> die "Usage: gen-xhb-monad <inDir> <outDir>"
+        _ -> die $ "Usage: gen-" ++ thePkgName ++ " <inDir> <outDir>"
 
 
 generate :: FilePath -> FilePath -> IO ()
 generate inDir outDir = do
     desc <- readPackageDescription silent (inDir </> "xhb.cabal")
     let (vs, targs) = getInfo desc
-        cabalOut = outDir </> "xhb-monad.cabal"
-        instDir = outDir </> "gen" </> "Graphics" </> "XHB" </> "Monad" </> "Internal" </> "Instances"
+        cabalOut = outDir </> thePkgName <.> "cabal"
+        instDir = outDir </> "gen" </> joinPath instancesPath
         genDir = inDir </> "patched" </> "Graphics" </> "XHB" </> "Gen"
     createDirectoryIfMissing True instDir
     writePackageDescription cabalOut $ buildDesc vs targs
@@ -61,9 +71,13 @@ getInfo gpd = (vs, targs)
 ----------------------
 
 
+cabalModuleName :: [String] -> Distribution.ModuleName.ModuleName
+cabalModuleName = fromString . intercalate "."
+
+
 buildDesc :: [Int] -> [String] -> PackageDescription
 buildDesc vs mods = emptyPackageDescription
-    { package = PackageIdentifier (PackageName "xhb-monad") (Version (0:1:vs) [])
+    { package = PackageIdentifier (PackageName thePkgName) (Version (0:1:vs) [])
     , license = MIT
     , licenseFiles = ["LICENSE"]
     , author = "Nick Spinale"
@@ -72,15 +86,13 @@ buildDesc vs mods = emptyPackageDescription
     , extraSrcFiles = ["README.md"]
     , specVersionRaw = Left (Version [1, 10] [])
     , library = Just emptyLibrary
-        { exposedModules = [fromString "Graphics.XHB.Monad"]
+        { exposedModules = [cabalModuleName baseModulePath]
         , libBuildInfo = emptyBuildInfo
-            { otherModules = fromString "Graphics.XHB.Monad.Internal.Classes"
-                           : fromString "Graphics.XHB.Monad.Internal.Instances"
-                           : map (fromString . ("Graphics.XHB.Monad.Internal.Instances." ++)) mods
+            { otherModules = cabalModuleName classesPath
+                           : cabalModuleName instancesPath
+                           : map (cabalModuleName . (++) instancesPath . (:[])) mods
             , targetBuildDepends =
                 [ Dependency (PackageName "base") anyVersion
-                , Dependency (PackageName "mtl") anyVersion
-                , Dependency (PackageName "transformers") anyVersion
                 , Dependency (PackageName "xhb") (thisVersion (Version vs []))
                 ]
             , hsSourceDirs = ["src", "gen"]
@@ -97,22 +109,21 @@ buildDesc vs mods = emptyPackageDescription
 allInstances :: [String] -> Module
 allInstances files = Module emptyLoc name [] Nothing (Just []) imps []
   where
-    name = ModuleName ("Graphics.XHB.Monad.Internal.Instances")
+    name = ModuleName $ intercalate "." instancesPath
     prag = LanguagePragma emptyLoc [Ident "MultiParamTypeClasses"]
     imps = map imp files
-    imp file = (emptyImport ("Graphics.XHB.Monad.Internal.Instances." ++ file))
-                    { importSpecs = Just (False, [])
-                    }
+    imp file = (emptyImport (intercalate "." (instancesPath ++ [file])))
+                    { importSpecs = Just (False, []) }
 
 
 instances :: String -> Module -> Module
 instances file (Module _ _ _ _ _ _ decls) = Module emptyLoc name [prag] Nothing (Just []) imps ds
   where
-    name = ModuleName ("Graphics.XHB.Monad.Internal.Instances." ++ file)
+    name = hsModuleName $ instancesPath ++ [file]
     prag = LanguagePragma emptyLoc [Ident "MultiParamTypeClasses"]
     f (mod, vars) = (emptyImport mod) { importSpecs = Just (False, map (IVar . Ident) vars) }
     imps = emptyImport ("Graphics.XHB.Gen." ++ file)
-         : emptyImport "Graphics.XHB.Monad.Internal.Classes"
+         : emptyImport (intercalate "." classesPath)
          : map f [ ("Prelude", ["fmap"])
                  , ("Data.Bifunctor", ["second"])
                  , ("Graphics.XHB", ["getReply"])
@@ -151,8 +162,8 @@ convert (Ident name) args ret = InstDecl emptyLoc Nothing [] []
 
     (types, klazz, fun) =
         if isJust ret
-        then ([inType, outType], "Request", "request")
-        else ([inType], "Notice", "notice")
+        then ([inType, outType], "RequestWithReply", "requestWithReply")
+        else ([inType], "Request", "request")
 
     (pats, outArgs) =
         let (pats', outArgs') =
@@ -167,11 +178,8 @@ convert (Ident name) args ret = InstDecl emptyLoc Nothing [] []
                     let tomap =
                             if typ == outType
                             then id
-                            else App (App fmapVar
-                                          (App fmapVar
-                                               (App (varOf "second")
-                                                    (varOf ("Mk" ++ title ++ "Reply")))))
-                    in tomap . App (App fmapVar (varOf "getReply"))
+                            else App (fmapTo (fmapTo (App (varOf "second") (varOf ("Mk" ++ title ++ "Reply")))))
+                    in tomap . App (fmapTo (varOf "getReply"))
 
     rhs = prerhs $ foldl App (App (varOf name) (varOf "conn")) outArgs
 
@@ -179,14 +187,17 @@ convert (Ident name) args ret = InstDecl emptyLoc Nothing [] []
     unQual = UnQual . Ident
     varOf = Var . unQual
     fmapVar = varOf "fmap"
+    fmapTo = App fmapVar
 
     inType = TyCon (unQual title)
     outType = TyCon (unQual (title ++ "Reply"))
 
 
+hsModuleName :: [String] -> Language.Haskell.Exts.ModuleName
+hsModuleName = ModuleName . intercalate "."
+
 emptyLoc :: SrcLoc
 emptyLoc = SrcLoc "" 0 0
-
 
 emptyImport :: String -> ImportDecl
 emptyImport mod = ImportDecl

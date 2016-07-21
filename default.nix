@@ -16,36 +16,36 @@ in rec {
     };
   };
 
-  xhb-monad-build-utils = hp.callPackage ./build-utils {};
+  xhb-requests-build-utils = hp.callPackage ./build-utils {};
 
-  xhb-monad-src = stdenv.mkDerivation {
+  xhb-requests-src = stdenv.mkDerivation {
 
-    name = "xhb-monad-src";
-    version = xhb-monad-build-utils.version + "." + xhb-src.version;
+    name = "xhb-requests-src";
+    version = xhb-requests-build-utils.version + "." + xhb-src.version;
 
     copyFiles = [./src ./README.md ./LICENSE];
 
-    buildUtils = xhb-monad-build-utils;
+    buildUtils = xhb-requests-build-utils;
     xhbSrc = xhb-src.src;
 
-    builder = builtins.toFile "xhb-monad-src-builder" ''
+    builder = builtins.toFile "xhb-requests-src-builder" ''
       source $stdenv/setup
       mkdir $out
       for f in $copyFiles; do
         cp -r $f $out/$(echo $f | cut -d - -f 2-)
       done
       tar -xzf $xhbSrc
-      $buildUtils/bin/gen-xhb-monad xhb-* $out
+      $buildUtils/bin/gen-xhb-requests xhb-* $out
     '';
 
   };
 
-  xhb-monad =
-    let f = { mkDerivation, base, stdenv, xhb, mtl, transformers }: mkDerivation {
-              pname = "xhb-monad";
-              version = xhb-monad-src.version;
-              src = xhb-monad-src;
-              libraryHaskellDepends = [ base mtl transformers xhb ];
+  xhb-requests =
+    let f = { mkDerivation, base, stdenv, xhb }: mkDerivation {
+              pname = "xhb-requests";
+              version = xhb-requests-src.version;
+              src = xhb-requests-src;
+              libraryHaskellDepends = [ base xhb ];
               license = stdenv.lib.licenses.mit;
             };
     in hp.callPackage f {};

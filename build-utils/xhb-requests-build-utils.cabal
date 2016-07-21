@@ -1,4 +1,4 @@
-Name:                xhb-monad-build-utils
+Name:                xhb-requests-build-utils
 Version:             0.1
 license:             MIT
 license-file:        LICENSE
@@ -9,7 +9,7 @@ extra-source-files:  README.md
 cabal-version:       >=1.10
 
 
-executable gen-xhb-monad
+executable gen-xhb-requests
 
   main-is:           Main.hs
   build-depends:     base

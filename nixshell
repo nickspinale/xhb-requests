@@ -1,2 +1,2 @@
 #!/bin/sh
-./mklinks && nix-shell -A xhb-monad.env
+./mklinks && nix-shell -A xhb-requests.env

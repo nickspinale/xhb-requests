@@ -6,6 +6,6 @@
 # them into .
 
 cd $(dirname $0)
-dir=$(nix-build -A xhb-monad-src --no-out-link)
-ln -sf $dir/xhb-monad.cabal xhb-monad.cabal
+dir=$(nix-build -A xhb-requests-src --no-out-link)
+ln -sf $dir/xhb-requests.cabal xhb-requests.cabal
 ln -sfT $dir/gen gen

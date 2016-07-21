@@ -2,7 +2,7 @@
 , stdenv
 }:
 mkDerivation {
-  pname = "xhb-monad-build-utils";
+  pname = "xhb-requests-build-utils";
   version = "0.1";
   src = ./.;
   isLibrary = false;
