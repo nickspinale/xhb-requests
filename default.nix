@@ -1,12 +1,10 @@
-{ nixpkgs ? import <nixpkgs> {}, compiler ? null }:
+{ nixpkgs ? import <nixpkgs> {}, haskellPackages ? null }:
 
-with nixpkgs;
-
-let hp = if compiler == null
+let hp = if haskellPackages == null
           then nixpkgs.haskellPackages
-          else nixpkgs.haskell.packages.${compiler};
+          else haskellPackages;
 
-in rec {
+in with nixpkgs; rec {
 
   xhb-src = {
     version = "0.6.2015.8.1";
