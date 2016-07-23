@@ -162,8 +162,8 @@ convert (Ident name) args ret = InstDecl emptyLoc Nothing [] []
 
     (types, klazz, fun) =
         if isJust ret
-        then ([inType, outType], "RequestWithReply", "requestWithReply")
-        else ([inType], "Request", "request")
+        then ([inType, outType], "RequestWithReply", "requestWithReplyIO")
+        else ([inType], "Request", "requestIO")
 
     (pats, outArgs) =
         let (pats', outArgs') =
