@@ -8,7 +8,7 @@ module Graphics.XHB.Requests.Internal.Classes
 import Graphics.XHB
 
 class Request a where
-    requestIO :: Connection -> a -> IO ()
+    requestIO :: a -> Connection -> IO ()
 
 class RequestWithReply a b | a -> b, b -> a where
-    requestWithReplyIO :: Connection -> a -> IO (IO (Either SomeError b))
+    requestWithReplyIO :: a -> Connection -> IO (IO (Either SomeError b))

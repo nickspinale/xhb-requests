@@ -166,11 +166,11 @@ convert (Ident name) args ret = InstDecl emptyLoc Nothing [] []
         else ([inType], "Request", "requestIO")
 
     (pats, outArgs) =
-        let (pats', outArgs') =
+        let (pat, outArgs') =
                 if args == [inType]
                 then (pvarId "req", ["req"])
                 else (PParen (PApp (unQual ("Mk" ++ title)) (map pvarId vars)), vars)
-        in (pvarId "conn" : [pats'], map varOf outArgs')
+        in ([pat, pvarId "conn"], map varOf outArgs')
 
     prerhs = case ret of
                 Nothing -> id
