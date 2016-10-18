@@ -5,6 +5,585 @@
 @package xhb-requests
 @version 0.1.0.6.2015.8.1
 
+module Graphics.XHB.Requests.Internal.Instances.BigRequests
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.BigRequests.Types.Enable Graphics.XHB.Gen.BigRequests.Types.EnableReply
+
+module Graphics.XHB.Requests.Internal.Instances.Composite
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Composite.Types.QueryVersion Graphics.XHB.Gen.Composite.Types.QueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Composite.Types.RedirectWindow
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Composite.Types.RedirectSubwindows
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Composite.Types.UnredirectWindow
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Composite.Types.UnredirectSubwindows
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Composite.Types.CreateRegionFromBorderClip
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Composite.Types.NameWindowPixmap
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Composite.Types.GetOverlayWindow Graphics.XHB.Gen.Composite.Types.GetOverlayWindowReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Composite.Types.ReleaseOverlayWindow
+
+module Graphics.XHB.Requests.Internal.Instances.Damage
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Damage.Types.QueryVersion Graphics.XHB.Gen.Damage.Types.QueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Damage.Types.Create
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Damage.Types.Destroy
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Damage.Types.Subtract
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Damage.Types.Add
+
+module Graphics.XHB.Requests.Internal.Instances.DPMS
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.DPMS.Types.GetVersion Graphics.XHB.Gen.DPMS.Types.GetVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.DPMS.Types.Capable Graphics.XHB.Gen.DPMS.Types.CapableReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.DPMS.Types.GetTimeouts Graphics.XHB.Gen.DPMS.Types.GetTimeoutsReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.DPMS.Types.SetTimeouts
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.DPMS.Types.Enable
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.DPMS.Types.Disable
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.DPMS.Types.ForceLevel
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.DPMS.Types.Info Graphics.XHB.Gen.DPMS.Types.InfoReply
+
+module Graphics.XHB.Requests.Internal.Instances.DRI2
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.DRI2.Types.QueryVersion Graphics.XHB.Gen.DRI2.Types.QueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.DRI2.Types.Connect Graphics.XHB.Gen.DRI2.Types.ConnectReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.DRI2.Types.Authenticate Graphics.XHB.Gen.DRI2.Types.AuthenticateReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.DRI2.Types.CreateDrawable
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.DRI2.Types.DestroyDrawable
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.DRI2.Types.GetBuffers Graphics.XHB.Gen.DRI2.Types.GetBuffersReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.DRI2.Types.CopyRegion Graphics.XHB.Gen.DRI2.Types.CopyRegionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.DRI2.Types.GetBuffersWithFormat Graphics.XHB.Gen.DRI2.Types.GetBuffersWithFormatReply
+
+module Graphics.XHB.Requests.Internal.Instances.Glx
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.Render
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.RenderLarge
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.CreateContext
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.DestroyContext
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.MakeCurrent Graphics.XHB.Gen.Glx.Types.MakeCurrentReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.IsDirect Graphics.XHB.Gen.Glx.Types.IsDirectReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.QueryVersion Graphics.XHB.Gen.Glx.Types.QueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.WaitGL
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.WaitX
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.CopyContext
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.SwapBuffers
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.UseXFont
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.CreateGLXPixmap
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetVisualConfigs Graphics.XHB.Gen.Glx.Types.GetVisualConfigsReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.DestroyGLXPixmap
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.VendorPrivate
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.VendorPrivateWithReply Graphics.XHB.Gen.Glx.Types.VendorPrivateWithReplyReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.QueryExtensionsString Graphics.XHB.Gen.Glx.Types.QueryExtensionsStringReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.QueryServerString Graphics.XHB.Gen.Glx.Types.QueryServerStringReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.ClientInfo
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetFBConfigs Graphics.XHB.Gen.Glx.Types.GetFBConfigsReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.CreatePixmap
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.DestroyPixmap
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.CreateNewContext
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.QueryContext Graphics.XHB.Gen.Glx.Types.QueryContextReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.MakeContextCurrent Graphics.XHB.Gen.Glx.Types.MakeContextCurrentReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.CreatePbuffer
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.DestroyPbuffer
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetDrawableAttributes Graphics.XHB.Gen.Glx.Types.GetDrawableAttributesReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.ChangeDrawableAttributes
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.CreateWindow
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.DeleteWindow
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.NewList
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.EndList
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.DeleteLists
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GenLists Graphics.XHB.Gen.Glx.Types.GenListsReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.FeedbackBuffer
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.SelectBuffer
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.RenderMode Graphics.XHB.Gen.Glx.Types.RenderModeReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.Finish Graphics.XHB.Gen.Glx.Types.FinishReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.PixelStoref
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.PixelStorei
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.ReadPixels Graphics.XHB.Gen.Glx.Types.ReadPixelsReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetBooleanv Graphics.XHB.Gen.Glx.Types.GetBooleanvReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetClipPlane Graphics.XHB.Gen.Glx.Types.GetClipPlaneReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetDoublev Graphics.XHB.Gen.Glx.Types.GetDoublevReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetError Graphics.XHB.Gen.Glx.Types.GetErrorReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetFloatv Graphics.XHB.Gen.Glx.Types.GetFloatvReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetIntegerv Graphics.XHB.Gen.Glx.Types.GetIntegervReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetLightfv Graphics.XHB.Gen.Glx.Types.GetLightfvReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetLightiv Graphics.XHB.Gen.Glx.Types.GetLightivReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetMapdv Graphics.XHB.Gen.Glx.Types.GetMapdvReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetMapfv Graphics.XHB.Gen.Glx.Types.GetMapfvReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetMapiv Graphics.XHB.Gen.Glx.Types.GetMapivReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetMaterialfv Graphics.XHB.Gen.Glx.Types.GetMaterialfvReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetMaterialiv Graphics.XHB.Gen.Glx.Types.GetMaterialivReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetPixelMapfv Graphics.XHB.Gen.Glx.Types.GetPixelMapfvReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetPixelMapuiv Graphics.XHB.Gen.Glx.Types.GetPixelMapuivReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetPixelMapusv Graphics.XHB.Gen.Glx.Types.GetPixelMapusvReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetPolygonStipple Graphics.XHB.Gen.Glx.Types.GetPolygonStippleReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetString Graphics.XHB.Gen.Glx.Types.GetStringReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetTexEnvfv Graphics.XHB.Gen.Glx.Types.GetTexEnvfvReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetTexEnviv Graphics.XHB.Gen.Glx.Types.GetTexEnvivReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetTexGendv Graphics.XHB.Gen.Glx.Types.GetTexGendvReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetTexGenfv Graphics.XHB.Gen.Glx.Types.GetTexGenfvReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetTexGeniv Graphics.XHB.Gen.Glx.Types.GetTexGenivReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetTexImage Graphics.XHB.Gen.Glx.Types.GetTexImageReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetTexParameterfv Graphics.XHB.Gen.Glx.Types.GetTexParameterfvReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetTexParameteriv Graphics.XHB.Gen.Glx.Types.GetTexParameterivReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetTexLevelParameterfv Graphics.XHB.Gen.Glx.Types.GetTexLevelParameterfvReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetTexLevelParameteriv Graphics.XHB.Gen.Glx.Types.GetTexLevelParameterivReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.IsList Graphics.XHB.Gen.Glx.Types.IsListReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.Flush
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.AreTexturesResident Graphics.XHB.Gen.Glx.Types.AreTexturesResidentReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.DeleteTextures
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GenTextures Graphics.XHB.Gen.Glx.Types.GenTexturesReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.IsTexture Graphics.XHB.Gen.Glx.Types.IsTextureReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetColorTable Graphics.XHB.Gen.Glx.Types.GetColorTableReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetColorTableParameterfv Graphics.XHB.Gen.Glx.Types.GetColorTableParameterfvReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetColorTableParameteriv Graphics.XHB.Gen.Glx.Types.GetColorTableParameterivReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetConvolutionFilter Graphics.XHB.Gen.Glx.Types.GetConvolutionFilterReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetConvolutionParameterfv Graphics.XHB.Gen.Glx.Types.GetConvolutionParameterfvReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetConvolutionParameteriv Graphics.XHB.Gen.Glx.Types.GetConvolutionParameterivReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetSeparableFilter Graphics.XHB.Gen.Glx.Types.GetSeparableFilterReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetHistogram Graphics.XHB.Gen.Glx.Types.GetHistogramReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetHistogramParameterfv Graphics.XHB.Gen.Glx.Types.GetHistogramParameterfvReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetHistogramParameteriv Graphics.XHB.Gen.Glx.Types.GetHistogramParameterivReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetMinmax Graphics.XHB.Gen.Glx.Types.GetMinmaxReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetMinmaxParameterfv Graphics.XHB.Gen.Glx.Types.GetMinmaxParameterfvReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetMinmaxParameteriv Graphics.XHB.Gen.Glx.Types.GetMinmaxParameterivReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetCompressedTexImageARB Graphics.XHB.Gen.Glx.Types.GetCompressedTexImageARBReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Glx.Types.DeleteQueriesARB
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GenQueriesARB Graphics.XHB.Gen.Glx.Types.GenQueriesARBReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.IsQueryARB Graphics.XHB.Gen.Glx.Types.IsQueryARBReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetQueryivARB Graphics.XHB.Gen.Glx.Types.GetQueryivARBReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetQueryObjectivARB Graphics.XHB.Gen.Glx.Types.GetQueryObjectivARBReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Glx.Types.GetQueryObjectuivARB Graphics.XHB.Gen.Glx.Types.GetQueryObjectuivARBReply
+
+module Graphics.XHB.Requests.Internal.Instances.RandR
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.QueryVersion Graphics.XHB.Gen.RandR.Types.QueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.SetScreenConfig Graphics.XHB.Gen.RandR.Types.SetScreenConfigReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.RandR.Types.SelectInput
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.GetScreenInfo Graphics.XHB.Gen.RandR.Types.GetScreenInfoReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.GetScreenSizeRange Graphics.XHB.Gen.RandR.Types.GetScreenSizeRangeReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.RandR.Types.SetScreenSize
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.GetScreenResources Graphics.XHB.Gen.RandR.Types.GetScreenResourcesReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.GetOutputInfo Graphics.XHB.Gen.RandR.Types.GetOutputInfoReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.ListOutputProperties Graphics.XHB.Gen.RandR.Types.ListOutputPropertiesReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.QueryOutputProperty Graphics.XHB.Gen.RandR.Types.QueryOutputPropertyReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.RandR.Types.ConfigureOutputProperty
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.RandR.Types.ChangeOutputProperty
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.RandR.Types.DeleteOutputProperty
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.GetOutputProperty Graphics.XHB.Gen.RandR.Types.GetOutputPropertyReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.CreateMode Graphics.XHB.Gen.RandR.Types.CreateModeReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.RandR.Types.DestroyMode
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.RandR.Types.AddOutputMode
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.RandR.Types.DeleteOutputMode
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.GetCrtcInfo Graphics.XHB.Gen.RandR.Types.GetCrtcInfoReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.SetCrtcConfig Graphics.XHB.Gen.RandR.Types.SetCrtcConfigReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.GetCrtcGammaSize Graphics.XHB.Gen.RandR.Types.GetCrtcGammaSizeReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.GetCrtcGamma Graphics.XHB.Gen.RandR.Types.GetCrtcGammaReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.RandR.Types.SetCrtcGamma
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.GetScreenResourcesCurrent Graphics.XHB.Gen.RandR.Types.GetScreenResourcesCurrentReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.RandR.Types.SetCrtcTransform
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.GetCrtcTransform Graphics.XHB.Gen.RandR.Types.GetCrtcTransformReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.GetPanning Graphics.XHB.Gen.RandR.Types.GetPanningReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.SetPanning Graphics.XHB.Gen.RandR.Types.SetPanningReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.RandR.Types.SetOutputPrimary
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.RandR.Types.GetOutputPrimary Graphics.XHB.Gen.RandR.Types.GetOutputPrimaryReply
+
+module Graphics.XHB.Requests.Internal.Instances.Record
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Record.Types.QueryVersion Graphics.XHB.Gen.Record.Types.QueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Record.Types.CreateContext
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Record.Types.RegisterClients
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Record.Types.UnregisterClients
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Record.Types.GetContext Graphics.XHB.Gen.Record.Types.GetContextReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Record.Types.EnableContext Graphics.XHB.Gen.Record.Types.EnableContextReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Record.Types.DisableContext
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Record.Types.FreeContext
+
+module Graphics.XHB.Requests.Internal.Instances.Render
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Render.Types.QueryVersion Graphics.XHB.Gen.Render.Types.QueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Render.Types.QueryPictFormats Graphics.XHB.Gen.Render.Types.QueryPictFormatsReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Render.Types.QueryPictIndexValues Graphics.XHB.Gen.Render.Types.QueryPictIndexValuesReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.CreatePicture
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.ChangePicture
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.SetPictureClipRectangles
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.FreePicture
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.Composite
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.Trapezoids
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.Triangles
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.TriStrip
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.TriFan
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.CreateGlyphSet
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.ReferenceGlyphSet
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.FreeGlyphSet
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.AddGlyphs
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.FreeGlyphs
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.CompositeGlyphs8
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.CompositeGlyphs16
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.CompositeGlyphs32
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.FillRectangles
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.CreateCursor
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.SetPictureTransform
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Render.Types.QueryFilters Graphics.XHB.Gen.Render.Types.QueryFiltersReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.SetPictureFilter
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.CreateAnimCursor
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.AddTraps
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.CreateSolidFill
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.CreateLinearGradient
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.CreateRadialGradient
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Render.Types.CreateConicalGradient
+
+module Graphics.XHB.Requests.Internal.Instances.Res
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Res.Types.QueryVersion Graphics.XHB.Gen.Res.Types.QueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Res.Types.QueryClients Graphics.XHB.Gen.Res.Types.QueryClientsReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Res.Types.QueryClientResources Graphics.XHB.Gen.Res.Types.QueryClientResourcesReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Res.Types.QueryClientPixmapBytes Graphics.XHB.Gen.Res.Types.QueryClientPixmapBytesReply
+
+module Graphics.XHB.Requests.Internal.Instances.ScreenSaver
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.ScreenSaver.Types.QueryVersion Graphics.XHB.Gen.ScreenSaver.Types.QueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.ScreenSaver.Types.QueryInfo Graphics.XHB.Gen.ScreenSaver.Types.QueryInfoReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.ScreenSaver.Types.SelectInput
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.ScreenSaver.Types.SetAttributes
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.ScreenSaver.Types.UnsetAttributes
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.ScreenSaver.Types.Suspend
+
+module Graphics.XHB.Requests.Internal.Instances.Shape
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Shape.Types.QueryVersion Graphics.XHB.Gen.Shape.Types.QueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Shape.Types.Rectangles
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Shape.Types.Mask
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Shape.Types.Combine
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Shape.Types.Offset
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Shape.Types.QueryExtents Graphics.XHB.Gen.Shape.Types.QueryExtentsReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Shape.Types.SelectInput
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Shape.Types.InputSelected Graphics.XHB.Gen.Shape.Types.InputSelectedReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Shape.Types.GetRectangles Graphics.XHB.Gen.Shape.Types.GetRectanglesReply
+
+module Graphics.XHB.Requests.Internal.Instances.Shm
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Shm.Types.QueryVersion Graphics.XHB.Gen.Shm.Types.QueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Shm.Types.Attach
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Shm.Types.Detach
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Shm.Types.PutImage
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Shm.Types.GetImage Graphics.XHB.Gen.Shm.Types.GetImageReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Shm.Types.CreatePixmap
+
+module Graphics.XHB.Requests.Internal.Instances.Sync
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Sync.Types.Initialize Graphics.XHB.Gen.Sync.Types.InitializeReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Sync.Types.ListSystemCounters Graphics.XHB.Gen.Sync.Types.ListSystemCountersReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Sync.Types.CreateCounter
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Sync.Types.DestroyCounter
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Sync.Types.QueryCounter Graphics.XHB.Gen.Sync.Types.QueryCounterReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Sync.Types.Await
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Sync.Types.ChangeCounter
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Sync.Types.SetCounter
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Sync.Types.CreateAlarm
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Sync.Types.ChangeAlarm
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Sync.Types.DestroyAlarm
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Sync.Types.QueryAlarm Graphics.XHB.Gen.Sync.Types.QueryAlarmReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Sync.Types.SetPriority
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Sync.Types.GetPriority Graphics.XHB.Gen.Sync.Types.GetPriorityReply
+
+module Graphics.XHB.Requests.Internal.Instances.XCMisc
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XCMisc.Types.GetVersion Graphics.XHB.Gen.XCMisc.Types.GetVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XCMisc.Types.GetXIDRange Graphics.XHB.Gen.XCMisc.Types.GetXIDRangeReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XCMisc.Types.GetXIDList Graphics.XHB.Gen.XCMisc.Types.GetXIDListReply
+
+module Graphics.XHB.Requests.Internal.Instances.Xevie
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xevie.Types.QueryVersion Graphics.XHB.Gen.Xevie.Types.QueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xevie.Types.Start Graphics.XHB.Gen.Xevie.Types.StartReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xevie.Types.End Graphics.XHB.Gen.Xevie.Types.EndReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xevie.Types.Send Graphics.XHB.Gen.Xevie.Types.SendReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xevie.Types.SelectInput Graphics.XHB.Gen.Xevie.Types.SelectInputReply
+
+module Graphics.XHB.Requests.Internal.Instances.XF86Dri
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XF86Dri.Types.QueryVersion Graphics.XHB.Gen.XF86Dri.Types.QueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XF86Dri.Types.QueryDirectRenderingCapable Graphics.XHB.Gen.XF86Dri.Types.QueryDirectRenderingCapableReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XF86Dri.Types.OpenConnection Graphics.XHB.Gen.XF86Dri.Types.OpenConnectionReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XF86Dri.Types.CloseConnection
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XF86Dri.Types.GetClientDriverName Graphics.XHB.Gen.XF86Dri.Types.GetClientDriverNameReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XF86Dri.Types.CreateContext Graphics.XHB.Gen.XF86Dri.Types.CreateContextReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XF86Dri.Types.DestroyContext
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XF86Dri.Types.CreateDrawable Graphics.XHB.Gen.XF86Dri.Types.CreateDrawableReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XF86Dri.Types.DestroyDrawable
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XF86Dri.Types.GetDrawableInfo Graphics.XHB.Gen.XF86Dri.Types.GetDrawableInfoReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XF86Dri.Types.GetDeviceInfo Graphics.XHB.Gen.XF86Dri.Types.GetDeviceInfoReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XF86Dri.Types.AuthConnection Graphics.XHB.Gen.XF86Dri.Types.AuthConnectionReply
+
+module Graphics.XHB.Requests.Internal.Instances.XFixes
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XFixes.Types.QueryVersion Graphics.XHB.Gen.XFixes.Types.QueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.ChangeSaveSet
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.SelectSelectionInput
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.SelectCursorInput
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XFixes.Types.GetCursorImage Graphics.XHB.Gen.XFixes.Types.GetCursorImageReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.CreateRegion
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.CreateRegionFromBitmap
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.CreateRegionFromWindow
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.CreateRegionFromGC
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.CreateRegionFromPicture
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.DestroyRegion
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.SetRegion
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.CopyRegion
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.UnionRegion
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.IntersectRegion
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.SubtractRegion
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.InvertRegion
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.TranslateRegion
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.RegionExtents
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XFixes.Types.FetchRegion Graphics.XHB.Gen.XFixes.Types.FetchRegionReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.SetGCClipRegion
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.SetWindowShapeRegion
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.SetPictureClipRegion
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.SetCursorName
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XFixes.Types.GetCursorName Graphics.XHB.Gen.XFixes.Types.GetCursorNameReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XFixes.Types.GetCursorImageAndName Graphics.XHB.Gen.XFixes.Types.GetCursorImageAndNameReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.ChangeCursor
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.ChangeCursorByName
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.ExpandRegion
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.HideCursor
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XFixes.Types.ShowCursor
+
+module Graphics.XHB.Requests.Internal.Instances.Xinerama
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xinerama.Types.QueryVersion Graphics.XHB.Gen.Xinerama.Types.QueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xinerama.Types.GetState Graphics.XHB.Gen.Xinerama.Types.GetStateReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xinerama.Types.GetScreenCount Graphics.XHB.Gen.Xinerama.Types.GetScreenCountReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xinerama.Types.GetScreenSize Graphics.XHB.Gen.Xinerama.Types.GetScreenSizeReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xinerama.Types.IsActive Graphics.XHB.Gen.Xinerama.Types.IsActiveReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xinerama.Types.QueryScreens Graphics.XHB.Gen.Xinerama.Types.QueryScreensReply
+
+module Graphics.XHB.Requests.Internal.Instances.Input
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.GetExtensionVersion Graphics.XHB.Gen.Input.Types.GetExtensionVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.ListInputDevices Graphics.XHB.Gen.Input.Types.ListInputDevicesReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.OpenDevice Graphics.XHB.Gen.Input.Types.OpenDeviceReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Input.Types.CloseDevice
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.SetDeviceMode Graphics.XHB.Gen.Input.Types.SetDeviceModeReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Input.Types.SelectExtensionEvent
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.GetSelectedExtensionEvents Graphics.XHB.Gen.Input.Types.GetSelectedExtensionEventsReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Input.Types.ChangeDeviceDontPropagateList
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.GetDeviceDontPropagateList Graphics.XHB.Gen.Input.Types.GetDeviceDontPropagateListReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.GetDeviceMotionEvents Graphics.XHB.Gen.Input.Types.GetDeviceMotionEventsReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.ChangeKeyboardDevice Graphics.XHB.Gen.Input.Types.ChangeKeyboardDeviceReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.ChangePointerDevice Graphics.XHB.Gen.Input.Types.ChangePointerDeviceReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.GrabDevice Graphics.XHB.Gen.Input.Types.GrabDeviceReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Input.Types.UngrabDevice
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Input.Types.GrabDeviceKey
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Input.Types.UngrabDeviceKey
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Input.Types.GrabDeviceButton
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Input.Types.UngrabDeviceButton
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Input.Types.AllowDeviceEvents
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.GetDeviceFocus Graphics.XHB.Gen.Input.Types.GetDeviceFocusReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Input.Types.SetDeviceFocus
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.GetFeedbackControl Graphics.XHB.Gen.Input.Types.GetFeedbackControlReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.GetDeviceKeyMapping Graphics.XHB.Gen.Input.Types.GetDeviceKeyMappingReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Input.Types.ChangeDeviceKeyMapping
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.GetDeviceModifierMapping Graphics.XHB.Gen.Input.Types.GetDeviceModifierMappingReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.SetDeviceModifierMapping Graphics.XHB.Gen.Input.Types.SetDeviceModifierMappingReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.GetDeviceButtonMapping Graphics.XHB.Gen.Input.Types.GetDeviceButtonMappingReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.SetDeviceButtonMapping Graphics.XHB.Gen.Input.Types.SetDeviceButtonMappingReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.QueryDeviceState Graphics.XHB.Gen.Input.Types.QueryDeviceStateReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Input.Types.SendExtensionEvent
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Input.Types.DeviceBell
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.SetDeviceValuators Graphics.XHB.Gen.Input.Types.SetDeviceValuatorsReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Input.Types.GetDeviceControl Graphics.XHB.Gen.Input.Types.GetDeviceControlReply
+
+module Graphics.XHB.Requests.Internal.Instances.XPrint
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XPrint.Types.PrintQueryVersion Graphics.XHB.Gen.XPrint.Types.PrintQueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XPrint.Types.PrintGetPrinterList Graphics.XHB.Gen.XPrint.Types.PrintGetPrinterListReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XPrint.Types.PrintRehashPrinterList
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XPrint.Types.CreateContext
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XPrint.Types.PrintSetContext
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XPrint.Types.PrintGetContext Graphics.XHB.Gen.XPrint.Types.PrintGetContextReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XPrint.Types.PrintDestroyContext
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XPrint.Types.PrintGetScreenOfContext Graphics.XHB.Gen.XPrint.Types.PrintGetScreenOfContextReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XPrint.Types.PrintStartJob
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XPrint.Types.PrintEndJob
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XPrint.Types.PrintStartDoc
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XPrint.Types.PrintEndDoc
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XPrint.Types.PrintPutDocumentData
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XPrint.Types.PrintGetDocumentData Graphics.XHB.Gen.XPrint.Types.PrintGetDocumentDataReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XPrint.Types.PrintStartPage
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XPrint.Types.PrintEndPage
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XPrint.Types.PrintSelectInput
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XPrint.Types.PrintInputSelected Graphics.XHB.Gen.XPrint.Types.PrintInputSelectedReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XPrint.Types.PrintGetAttributes Graphics.XHB.Gen.XPrint.Types.PrintGetAttributesReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XPrint.Types.PrintGetOneAttributes Graphics.XHB.Gen.XPrint.Types.PrintGetOneAttributesReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XPrint.Types.PrintSetAttributes
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XPrint.Types.PrintGetPageDimensions Graphics.XHB.Gen.XPrint.Types.PrintGetPageDimensionsReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XPrint.Types.PrintQueryScreens Graphics.XHB.Gen.XPrint.Types.PrintQueryScreensReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XPrint.Types.PrintSetImageResolution Graphics.XHB.Gen.XPrint.Types.PrintSetImageResolutionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XPrint.Types.PrintGetImageResolution Graphics.XHB.Gen.XPrint.Types.PrintGetImageResolutionReply
+
+module Graphics.XHB.Requests.Internal.Instances.Xproto
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.CreateWindow
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.ChangeWindowAttributes
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.GetWindowAttributes Graphics.XHB.Gen.Xproto.Types.GetWindowAttributesReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.DestroyWindow
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.DestroySubwindows
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.ChangeSaveSet
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.ReparentWindow
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.MapWindow
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.MapSubwindows
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.UnmapWindow
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.UnmapSubwindows
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.ConfigureWindow
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.CirculateWindow
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.GetGeometry Graphics.XHB.Gen.Xproto.Types.GetGeometryReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.QueryTree Graphics.XHB.Gen.Xproto.Types.QueryTreeReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.InternAtom Graphics.XHB.Gen.Xproto.Types.InternAtomReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.GetAtomName Graphics.XHB.Gen.Xproto.Types.GetAtomNameReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.ChangeProperty
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.DeleteProperty
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.GetProperty Graphics.XHB.Gen.Xproto.Types.GetPropertyReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.ListProperties Graphics.XHB.Gen.Xproto.Types.ListPropertiesReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.SetSelectionOwner
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.GetSelectionOwner Graphics.XHB.Gen.Xproto.Types.GetSelectionOwnerReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.ConvertSelection
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.SendEvent
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.GrabPointer Graphics.XHB.Gen.Xproto.Types.GrabPointerReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.UngrabPointer
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.GrabButton
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.UngrabButton
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.ChangeActivePointerGrab
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.GrabKeyboard Graphics.XHB.Gen.Xproto.Types.GrabKeyboardReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.UngrabKeyboard
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.GrabKey
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.UngrabKey
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.AllowEvents
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.GrabServer
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.UngrabServer
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.QueryPointer Graphics.XHB.Gen.Xproto.Types.QueryPointerReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.GetMotionEvents Graphics.XHB.Gen.Xproto.Types.GetMotionEventsReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.TranslateCoordinates Graphics.XHB.Gen.Xproto.Types.TranslateCoordinatesReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.WarpPointer
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.SetInputFocus
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.GetInputFocus Graphics.XHB.Gen.Xproto.Types.GetInputFocusReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.QueryKeymap Graphics.XHB.Gen.Xproto.Types.QueryKeymapReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.OpenFont
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.CloseFont
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.QueryFont Graphics.XHB.Gen.Xproto.Types.QueryFontReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.QueryTextExtents Graphics.XHB.Gen.Xproto.Types.QueryTextExtentsReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.ListFonts Graphics.XHB.Gen.Xproto.Types.ListFontsReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.ListFontsWithInfo Graphics.XHB.Gen.Xproto.Types.ListFontsWithInfoReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.SetFontPath
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.GetFontPath Graphics.XHB.Gen.Xproto.Types.GetFontPathReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.CreatePixmap
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.FreePixmap
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.CreateGC
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.ChangeGC
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.CopyGC
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.SetDashes
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.SetClipRectangles
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.FreeGC
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.ClearArea
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.CopyArea
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.CopyPlane
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.PolyPoint
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.PolyLine
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.PolySegment
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.PolyRectangle
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.PolyArc
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.FillPoly
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.PolyFillRectangle
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.PolyFillArc
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.PutImage
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.GetImage Graphics.XHB.Gen.Xproto.Types.GetImageReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.PolyText8
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.PolyText16
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.ImageText8
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.ImageText16
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.CreateColormap
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.FreeColormap
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.CopyColormapAndFree
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.InstallColormap
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.UninstallColormap
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.ListInstalledColormaps Graphics.XHB.Gen.Xproto.Types.ListInstalledColormapsReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.AllocColor Graphics.XHB.Gen.Xproto.Types.AllocColorReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.AllocNamedColor Graphics.XHB.Gen.Xproto.Types.AllocNamedColorReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.AllocColorCells Graphics.XHB.Gen.Xproto.Types.AllocColorCellsReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.AllocColorPlanes Graphics.XHB.Gen.Xproto.Types.AllocColorPlanesReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.FreeColors
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.StoreColors
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.StoreNamedColor
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.QueryColors Graphics.XHB.Gen.Xproto.Types.QueryColorsReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.LookupColor Graphics.XHB.Gen.Xproto.Types.LookupColorReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.CreateCursor
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.CreateGlyphCursor
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.FreeCursor
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.RecolorCursor
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.QueryBestSize Graphics.XHB.Gen.Xproto.Types.QueryBestSizeReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.QueryExtension Graphics.XHB.Gen.Xproto.Types.QueryExtensionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.ListExtensions Graphics.XHB.Gen.Xproto.Types.ListExtensionsReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.ChangeKeyboardMapping
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.GetKeyboardMapping Graphics.XHB.Gen.Xproto.Types.GetKeyboardMappingReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.ChangeKeyboardControl
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.GetKeyboardControl Graphics.XHB.Gen.Xproto.Types.GetKeyboardControlReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.Bell
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.ChangePointerControl
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.GetPointerControl Graphics.XHB.Gen.Xproto.Types.GetPointerControlReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.SetScreenSaver
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.GetScreenSaver Graphics.XHB.Gen.Xproto.Types.GetScreenSaverReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.ChangeHosts
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.ListHosts Graphics.XHB.Gen.Xproto.Types.ListHostsReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.SetAccessControl
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.SetCloseDownMode
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.KillClient
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.RotateProperties
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.ForceScreenSaver
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.SetPointerMapping Graphics.XHB.Gen.Xproto.Types.SetPointerMappingReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.GetPointerMapping Graphics.XHB.Gen.Xproto.Types.GetPointerMappingReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.SetModifierMapping Graphics.XHB.Gen.Xproto.Types.SetModifierMappingReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xproto.Types.GetModifierMapping Graphics.XHB.Gen.Xproto.Types.GetModifierMappingReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xproto.Types.NoOperation
+
+module Graphics.XHB.Requests.Internal.Instances.SELinux
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.SELinux.Types.QueryVersion Graphics.XHB.Gen.SELinux.Types.QueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.SELinux.Types.SetDeviceCreateContext
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.SELinux.Types.GetDeviceCreateContext Graphics.XHB.Gen.SELinux.Types.GetDeviceCreateContextReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.SELinux.Types.SetDeviceContext
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.SELinux.Types.GetDeviceContext Graphics.XHB.Gen.SELinux.Types.GetDeviceContextReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.SELinux.Types.SetWindowCreateContext
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.SELinux.Types.GetWindowCreateContext Graphics.XHB.Gen.SELinux.Types.GetWindowCreateContextReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.SELinux.Types.GetWindowContext Graphics.XHB.Gen.SELinux.Types.GetWindowContextReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.SELinux.Types.SetPropertyCreateContext
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.SELinux.Types.GetPropertyCreateContext Graphics.XHB.Gen.SELinux.Types.GetPropertyCreateContextReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.SELinux.Types.SetPropertyUseContext
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.SELinux.Types.GetPropertyUseContext Graphics.XHB.Gen.SELinux.Types.GetPropertyUseContextReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.SELinux.Types.GetPropertyContext Graphics.XHB.Gen.SELinux.Types.GetPropertyContextReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.SELinux.Types.GetPropertyDataContext Graphics.XHB.Gen.SELinux.Types.GetPropertyDataContextReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.SELinux.Types.ListProperties Graphics.XHB.Gen.SELinux.Types.ListPropertiesReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.SELinux.Types.SetSelectionCreateContext
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.SELinux.Types.GetSelectionCreateContext Graphics.XHB.Gen.SELinux.Types.GetSelectionCreateContextReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.SELinux.Types.SetSelectionUseContext
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.SELinux.Types.GetSelectionUseContext Graphics.XHB.Gen.SELinux.Types.GetSelectionUseContextReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.SELinux.Types.GetSelectionContext Graphics.XHB.Gen.SELinux.Types.GetSelectionContextReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.SELinux.Types.GetSelectionDataContext Graphics.XHB.Gen.SELinux.Types.GetSelectionDataContextReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.SELinux.Types.ListSelections Graphics.XHB.Gen.SELinux.Types.ListSelectionsReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.SELinux.Types.GetClientContext Graphics.XHB.Gen.SELinux.Types.GetClientContextReply
+
+module Graphics.XHB.Requests.Internal.Instances.Test
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Test.Types.GetVersion Graphics.XHB.Gen.Test.Types.GetVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Test.Types.CompareCursor Graphics.XHB.Gen.Test.Types.CompareCursorReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Test.Types.FakeInput
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Test.Types.GrabControl
+
+module Graphics.XHB.Requests.Internal.Instances.XvMC
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XvMC.Types.QueryVersion Graphics.XHB.Gen.XvMC.Types.QueryVersionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XvMC.Types.ListSurfaceTypes Graphics.XHB.Gen.XvMC.Types.ListSurfaceTypesReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XvMC.Types.CreateContext Graphics.XHB.Gen.XvMC.Types.CreateContextReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XvMC.Types.DestroyContext
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XvMC.Types.CreateSurface Graphics.XHB.Gen.XvMC.Types.CreateSurfaceReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XvMC.Types.DestroySurface
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XvMC.Types.CreateSubpicture Graphics.XHB.Gen.XvMC.Types.CreateSubpictureReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.XvMC.Types.DestroySubpicture
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.XvMC.Types.ListSubpictureTypes Graphics.XHB.Gen.XvMC.Types.ListSubpictureTypesReply
+
+module Graphics.XHB.Requests.Internal.Instances.Xv
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xv.Types.QueryExtension Graphics.XHB.Gen.Xv.Types.QueryExtensionReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xv.Types.QueryAdaptors Graphics.XHB.Gen.Xv.Types.QueryAdaptorsReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xv.Types.QueryEncodings Graphics.XHB.Gen.Xv.Types.QueryEncodingsReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xv.Types.GrabPort Graphics.XHB.Gen.Xv.Types.GrabPortReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xv.Types.UngrabPort
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xv.Types.PutVideo
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xv.Types.PutStill
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xv.Types.GetVideo
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xv.Types.GetStill
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xv.Types.StopVideo
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xv.Types.SelectVideoNotify
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xv.Types.SelectPortNotify
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xv.Types.QueryBestSize Graphics.XHB.Gen.Xv.Types.QueryBestSizeReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xv.Types.SetPortAttribute
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xv.Types.GetPortAttribute Graphics.XHB.Gen.Xv.Types.GetPortAttributeReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xv.Types.QueryPortAttributes Graphics.XHB.Gen.Xv.Types.QueryPortAttributesReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xv.Types.ListImageFormats Graphics.XHB.Gen.Xv.Types.ListImageFormatsReply
+instance Graphics.XHB.Requests.Internal.Classes.RequestWithReply Graphics.XHB.Gen.Xv.Types.QueryImageAttributes Graphics.XHB.Gen.Xv.Types.QueryImageAttributesReply
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xv.Types.PutImage
+instance Graphics.XHB.Requests.Internal.Classes.Request Graphics.XHB.Gen.Xv.Types.ShmPutImage
+
 module Graphics.XHB.Requests
 class Request a
 requestIO :: Request a => a -> Connection -> IO ()
