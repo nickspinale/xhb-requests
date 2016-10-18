@@ -86,11 +86,10 @@ buildDesc vs mods = emptyPackageDescription
     , extraSrcFiles = ["README.md"]
     , specVersionRaw = Left (Version [1, 10] [])
     , library = Just emptyLibrary
-        { exposedModules = [cabalModuleName baseModulePath]
+        { exposedModules = cabalModuleName baseModulePath
+                         : map (cabalModuleName . (++) instancesPath . (:[])) mods
         , libBuildInfo = emptyBuildInfo
-            { otherModules = cabalModuleName classesPath
-                           : cabalModuleName instancesPath
-                           : map (cabalModuleName . (++) instancesPath . (:[])) mods
+            { otherModules = [cabalModuleName instancesPath, cabalModuleName classesPath]
             , targetBuildDepends =
                 [ Dependency (PackageName "base") anyVersion
                 , Dependency (PackageName "xhb") (thisVersion (Version vs []))
