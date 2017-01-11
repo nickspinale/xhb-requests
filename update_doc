@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+here=$(dirname $0)
+result=$(nix-build $here -A haskellPackages.xhb-requests --no-out-link)
+cp -r $result/share/doc/*-*-ghc-*/xhb-requests-*/html/* $here/doc
