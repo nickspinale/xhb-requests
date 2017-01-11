@@ -1,2 +1,0 @@
-#!/bin/sh
-./mklinks && nix-shell -A xhb-requests.env

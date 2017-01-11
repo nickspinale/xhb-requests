@@ -1,22 +1,10 @@
-{ pkgs ? (import <nixpkgs> {}).pkgs, compiler ? null }:
-
-with pkgs;
-let
-
-  hp = if compiler == null
-       then pkgs.haskellPackages
-       else pkgs.haskell.packages.${compiler};
-
-in rec {
-
-  xhb-requests-build-utils = hp.callPackage ./build-utils {};
-
-  xhb-requests-src = callPackage ./xhb-requests-src.nix {
-    inherit xhb-requests-build-utils;
+import <nixpkgs> {
+  config = { pkgs }: {
+    haskellPackageOverrides = self: super: with pkgs.haskell.lib; {
+      xhb = appendPatch super.xhb ./xhb.patch;
+      xhb-requests = self.callPackage ./xhb-requests.nix {};
+      xhb-requests-src = self.callPackage ./xhb-requests-src.nix {};
+      xhb-requests-build-utils = self.callPackage ./build-utils {};
+    };
   };
-
-  xhb-requests = hp.callPackage ./xhb-requests.nix {
-    inherit xhb-requests-src;
-  };
-
 }
