@@ -35,7 +35,7 @@ This may sound ugly, but it worked quite well.
 
 This package is the foundation for [xhb-monad](https://nickspinale.github.io/xhb-monad) and friends.
 
-[This article](https://nickspinale.com/articles/xhb-monad) describes this set of packages in detail.
+[This article](http://nickspinale.com/articles/xhb-monad) describes this set of packages in detail.
 
 ## Documentation
 
