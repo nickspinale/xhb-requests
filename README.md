@@ -33,13 +33,13 @@ class RequestWithReply a b | a -> b, b -> a where
 The instances of this class are generated from the xhb source which is itself generated from XML protocol documents.
 This may sound ugly, but it worked quite well.
 
-This package is the foundation for [xhb-monad](https://nickspinale.github.io/xhb-monad) and friends.
+This package is the foundation for [xhb-monad](https://nspin.github.io/xhb-monad) and friends.
 
 [This article](http://nickspinale.com/articles/xhb-monad) describes this set of packages in detail.
 
 ## Documentation
 
-Haddock can be found [here](https://nickspinale.github.io/xhb-requests).
+Haddock can be found [here](https://nspin.github.io/xhb-requests).
 
 ## Building
 
